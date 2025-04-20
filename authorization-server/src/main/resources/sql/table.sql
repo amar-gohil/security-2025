@@ -1,5 +1,6 @@
 CREATE TABLE oauth_client (
-    client_id VARCHAR(255) PRIMARY KEY,         -- Generated Unique Client ID
+    id VARCHAR(255) PRIMARY KEY,
+    client_id VARCHAR(255) UNIQUE NOT NULL,         -- Generated Unique Client ID
     client_secret VARCHAR(255) NOT NULL,        -- Generated Secret (Hashed)
     client_name VARCHAR(255) NOT NULL,          -- Client App Name
     scopes VARCHAR(255) NOT NULL,               -- Allowed Scopes (Comma-separated)
@@ -25,3 +26,13 @@ CREATE TABLE user_roles (
     role VARCHAR(50) NOT NULL,
     FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE
 );
+
+
+INSERT INTO AuthorizationServer.users
+(id, username, password, enabled, created_at)
+VALUES(0, 'user', 'password', 1, NOW());
+
+
+INSERT INTO AuthorizationServer.oauth_client
+(id, client_id, client_secret, client_name, scopes, grant_types, redirect_uris, token_ttl, refresh_token_ttl, created_at)
+VALUES('dc104103-6911-4ea2-8c33-119e592e65b1', 'one-client-id', 'client-secret','one-client-id' , 'authorization_code,refresh_token,client_credentials', 'openid,user.read,user.write', 'http://google.com', 3600, 86400, NOW());

@@ -15,6 +15,9 @@ import java.util.Date;
 public class OAuthClient {
 
     @Id
+    @Column(name = "id", nullable = false, unique = true)
+    private String id;  // Generated Client ID
+
     @Column(name = "client_id", nullable = false, unique = true)
     private String clientId;  // Generated Client ID
 
@@ -43,4 +46,83 @@ public class OAuthClient {
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt = new Date();
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    public String getClientSecret() {
+        return clientSecret;
+    }
+
+    public void setClientSecret(String clientSecret) {
+        this.clientSecret = clientSecret;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
+
+    public String getScopes() {
+        return scopes;
+    }
+
+    public void setScopes(String scopes) {
+        this.scopes = scopes;
+    }
+
+    public String getGrantTypes() {
+        return grantTypes;
+    }
+
+    public void setGrantTypes(String grantTypes) {
+        this.grantTypes = grantTypes;
+    }
+
+    public String getRedirectUris() {
+        return redirectUris;
+    }
+
+    public void setRedirectUris(String redirectUris) {
+        this.redirectUris = redirectUris;
+    }
+
+    public Integer getTokenTtl() {
+        return tokenTtl;
+    }
+
+    public void setTokenTtl(Integer tokenTtl) {
+        this.tokenTtl = tokenTtl;
+    }
+
+    public Integer getRefreshTokenTtl() {
+        return refreshTokenTtl;
+    }
+
+    public void setRefreshTokenTtl(Integer refreshTokenTtl) {
+        this.refreshTokenTtl = refreshTokenTtl;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 }
